@@ -113,5 +113,34 @@
     line-height: 1.6;
   }
 
+  .image-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.image-row figure {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.image-row img {
+    width: 100%;
+    height: auto;
+}
+
+.figcaption {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #555;
+}
+.image-row figcaption {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #555;
+}
+
 
 

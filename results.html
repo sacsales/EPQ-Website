@@ -61,14 +61,99 @@
       Germanic words make up a majority (54%) of the 50 most common unique words in the Amalgamation corpus, but not by a great margin, compared to Latin (42%). This shows that both Latin and Old Germanic had a broad lexical influence on syntax. Latinate words occurred less frequently within programming syntax compared to Germanic (33% to 64%, respectively) - in other words, the number of words measure the breadth of influence of a certain language, while frequency measures the extent of their actual usage within code. 
     </p>
 
+    <div class="image-row">
+    <figure>
+        <img src="amalTotal.png" alt="Zipf graph">
+        <figcaption>Figure 1: Total Unique Words, by origin</figcaption>
+    </figure>
+
+    <figure>
+        <img src="amalFreq.png" alt="Origins chart">
+        <figcaption>Figure 2: Frequency by origin</figcaption>
+    </figure>
+
+</div>
+
+
     <p>Although Latin-derived words make up nearly as many distinct terms as Germanic-derived words, they occur much less frequently in the corpus. This suggests that Latin's influence is broad, with many different Latinate words present, but these words tend to be used less often than Germanic-derived vocabulary.</p>
+
 
 <p>The Germanic vocabulary appears to contain many of the most frequently used words. Words classed as ‘Grammar’ words made up 44% of the most commonly used words, and 85% of those words were of Germanic origin. This is consistent with the tendency for Germanic-origin words in English to serve fundamental grammatical and operational functions, while Latinate words are often more specialised or technical, and therefore are used less frequently.</p>
 
-<p>Latin-derived words dominated those classed as mathematical, administrative and metaphorical<br>(100%, 87% and 75%, respectively)</p>
+<div class="image-row">
+    <figure>
+        <img src="amalWordClass.png" alt="Zipf graph">
+        <figcaption>Figure 3: Word Classification</figcaption>
+    </figure>
+
+    <figure>
+        <img src="amalGrammar.png" alt="Origins chart">
+        <figcaption>Figure 4: Grammar Words by Origin</figcaption>
+    </figure>
+
+</div>
+
+<p>Latin-derived words dominated those classed as mathematical, administrative, metaphorical and communication<br>(100%, 87%, 75% and 60%, respectively) within the amalgamation corpus. This was consistent with the three mini corpora as well! </p>
+
+<div class="image-row">
+
+     <figure>
+        <img src="amalMath.png" alt="Origins chart">
+        <figcaption>Figure 5: Mathematical Words by Origin</figcaption>
+    </figure>
+
+
+    <figure>
+        <img src="amalAdmin.png" alt="Zipf graph">
+        <figcaption>Figure 6: Administrative Words by Origin</figcaption>
+    </figure>
+
+   
+    <figure>
+        <img src="amalMetaphor.png" alt="Origins chart">
+        <figcaption>Figure 7: Metaphorical Words by Origin</figcaption>
+    </figure>
+
+    <figure>
+        <img src="amalCommunication.png" alt="Origins chart">
+        <figcaption>Figure 8: Communication Words by Origin</figcaption>
+    </figure>
+
+</div>
+
 
 <p>This suggests Latin’s influence is concentrated within areas involving abstraction, organisation and conceptual modelling rather than basic, grammatical language (where 90% of words were of a Germanic origin). This reflects the role of Latin as a ‘language of learning’ especially as many new technical words were coined during the renaissance.</p>
 <p> 
+
+The data from all 4 corpora (the 3 individual projects as well as the amalgamation) show adherence to Zipf’s Law, a law stating that the frequencies f of words within a language are inversely proportional to their rank r. In other words, a word ranked 2nd occurs half as often as the rank 1 word, and the rank 3 word 1/3rd as often and so on and so forth. If rank over frequency is plotted on a log-log scale, the line is approximately straight with a negative gradient. The Zipf’s Law graphs of the 4 corpora show a degree of adherence to this law, showing that the distribution of words within programming syntax of C is similar to that of a natural language. 
+</p>
+
+<div class="image-row">
+    <figure>
+        <img src="amalGraph.png" alt="Zipf graph">
+        <figcaption>Figure 9: Zipf’s Law - Amalgamation</figcaption>
+    </figure>
+
+    <figure>
+        <img src="tinyExprGraph.png" alt="Origins chart">
+        <figcaption>Figure 10: Zipf’s Law - TinyExpr</figcaption>
+    </figure>
+
+</div>
+
+<div class="image-row">
+    <figure>
+        <img src="LuaGraph.png" alt="Zipf graph">
+        <figcaption>Figure 11: Zipf’s Law - Lua</figcaption>
+    </figure>
+
+    <figure>
+        <img src="SQLiteGraph.png" alt="Origins chart">
+        <figcaption>Figure 12: Zipf’s Law - SQLite</figcaption>
+    </figure>
+
+</div>
+
 
 <br> 
 
