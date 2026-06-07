@@ -45,6 +45,17 @@
     border-left: 4px solid #000;
   }
 
+  .sidebar a.active {
+    background: #e8e8e8;
+    font-weight: bold;
+    border-left: 4px solid #000;
+    padding-left: 12px; /* compensates for border */
+    }
+
+  .sidebar a.active:hover {
+    background: #e8e8e8;
+    }
+
 
 
   .sidebar a:hover {
