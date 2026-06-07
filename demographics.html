@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PAGE TITLE</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    border-right: 1px solid #ddd;
+    padding: 10px 0;
+    overflow-y: auto;
+  }
+
+  .section {
+    display: block;
+    padding: 10px 16px 4px 16px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #333;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+
+  .section:hover {
+    background: #f2f2f2;
+  }
+
+  .sidebar a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+
+  .sidebar a:hover {
+    background: #f2f2f2;
+  }
+
+  .indent-1,
+  .indent-2 {
+    position: relative;
+    padding-left: 36px !important;
+    font-size: 13px;
+  }
+
+  .indent-2 {
+    padding-left: 52px !important;
+  }
+
+  .indent-1::before,
+  .indent-2::before {
+    content: "★";
+    position: absolute;
+    left: 16px;
+    color: #888;
+    font-size: 10px;
+  }
+
+  .indent-2::before {
+    left: 32px;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .main {
+    margin-left: 260px;
+  }
+
+  .topbar {
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-weight: bold;
+  }
+
+  .content {
+    padding: 20px;
+    max-width: 800px;
+  }
+
+  h1 {
+    margin-top: 10px;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<a class="section" href="intro.html">Introduction</a>
+  <a class="section" href="latin.html">Latin’s Influence on the English Language</a>
+  <a class="indent-1" href="history.html">A Brief History of the English Language</a>
+  <a class="indent-1" href="lexical-waves.html">Lexical ‘Waves’</a>
+
+  <a class="section" href="programming.html">The Evolution of Programming Languages</a>
+  <a class="indent-1" href="gen1.html">Bases and Binary (Generation 1)</a>
+  <a class="indent-1" href="gen2.html">Assembly Language (Generation 2)</a>
+  <a class="indent-1" href="gen3-4.html">High-Level Languages (Generation 3 and 4)</a>
+
+ <a class="section" href="syntax.html">To what extent did Latin influence syntax?</a>
+  <a class="indent-1" href="latinates.html">Latinates in Programming Conceptual Terms</a>
+  <a class="indent-1" href="corpus.html">An Introduction to Corpus Linguistics</a>
+  <a class="indent-1" href="corpora.html">Selecting Corpora</a>
+  <a class="indent-1" href="tokeniser.html">Building a Tokeniser</a>
+  <a class="indent-1" href="processing.html">Processing Data</a>
+  <a class="indent-1" href="results.html">Results and Interpretations</a>
+  <a class="indent-1" href="interactiveTokeniser.html"> Try it for yourself! </a>
+  <a class="section" href="programmers.html">Non-native English Programmers</a>
+  <a class="indent-1" href="demographics.html">Programmer Demographics</a>
+  <a class="indent-1" href="barriers.html">Barriers to learning</a>
+  <a class="indent-1" href="overcoming.html">Overcoming Barriers</a>
+
+  <a class="section" href="reference.html">Reference</a>
+  <a class="indent-1" href="glossary.html">Glossary (searchable)</a>
+  <a class="indent-1" href="bibliography.html">Bibliography</a>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="topbar">
+    EAL Programmers 
+  </div>
+
+  <div class="content">
+
+
+    <h2>Programmer Demographics</h2>
+
+<p>
+Stack Overflow is one of the most common programming forums today. An annual survey is taken, creating one of the largest datasets on developers around the world, with its 2025 edition surveying over 49,000 developers from 177 different countries - the field of programming and computer science is indeed global. A significant portion of its respondents came from English-speaking countries (respondents from the US and UK total 26.2%), but the other 73.8% did not, residing in countries such as Germany (8.6%), India (7.2%) and France (4%).
+</p>
+
+<p>
+According to Github’s global developer data, more than 21.9 million of the 180 million total developers using Github are located in India, with an additional 6.89 million in Brazil and 10.7 million in China. India is projected to reach 57.5 million developers by 2030, and has the greatest number of new developers joining the site yearly - moreover, it now has the largest public and open source contributor base in the world.
+</p>
+
+<p>
+With the global developer population increasing everyday, especially in countries where English is not the primary language, it is a reasonable inference that many of these programmers speak and operate in a different language in everyday life - so what does this mean for programmers, when programming language syntax (as well as the supporting documentation, learning resources and forums) is primarily english-based?
+</p>
+
+<p>
+Nearly 68% of programmers surveyed used technical documentation as their main resource when learning a programming language, which is primarily written in English. The majority of MOOCs (Massive Open Online Courses) are also in English.
+</p>
+
+<p>
+A survey focusing specifically on the difficulties EAL programmers face was sent to the programming education website pythontutor.com, receiving 840 responses from 86 different countries, spanning 74 different native languages. Although this is a relatively small sample size and therefore makes generalisation difficult (especially since programmers; individual fluency levels and experiences learning to code are incredibly nuanced and personal due to personal circumstances and background) I found its findings very relevant to the questions I had. 96% of respondents read programming-related materials in English.
+</p>
+
+  </div>
+
+</div>
+
+</body>
+</html>

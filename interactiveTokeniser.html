@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tokeniser</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 95%;
+            height: 180px;
+        }
+
+        button {
+            margin: 5px 5px 10px 0;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px;
+            text-align: left;
+        }
+
+        #stats {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Tokeniser</h1>
+
+<button onclick="window.location.href='tokeniser.html'">Back to Home</button>
+
+<p>Try the tokeniser for yourself! Built using JavaScript. The origin of the words is referenced from a static table, so it may be incomplete. Look at the OED or Eytmonline website to verify them. </p>
+<p>Enter any code snippet:</p>
+
+<textarea id="inputText"></textarea>
+
+<br>
+
+<button onclick="processText()">Begin Processing</button>
+<button onclick="clearAll()">Clear</button>
+<button onclick="loadSample()">Sample Code</button>
+<button onclick="exportCSV()">Export CSV</button>
+<button onclick="plotZipf()">Plot Zipf</button>
+
+<div id="stats">Total words: 0 | Unique words: 0</div>
+<div id="originStats">Latin: 0% | Germanic: 0%</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Word</th>
+            <th>Frequency</th>
+            <th>Origin</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<canvas id="zipfChart" width="600" height="300"></canvas>
+
+<script>
+
+    const originMap = {
+  // ---------------- CORE FUNCTIONAL WORDS ----------------
+  the: "Germanic",
+  if: "Germanic",
+  else: "Germanic",
+  for: "Germanic",
+  in: "Germanic",
+  to: "Germanic",
+  is: "Germanic",
+  be: "Germanic",
+  not: "Germanic",
+  and: "Germanic",
+  or: "Germanic",
+  as: "Germanic",
+  with: "Germanic",
+  from: "Germanic",
+  by: "Germanic",
+  it: "Germanic",
+  this: "Germanic",
+  that: "Germanic",
+  while: "Germanic",
+  when: "Germanic",
+
+  // ---------------- PYTHON / PROGRAM FLOW ----------------
+  def: "Latin",
+  class: "Latin",
+  return: "Latin",
+  import: "Latin",
+  include: "Latin",
+  pass: "Latin",
+
+  // ---------------- DATA / STRUCTURE WORDS ----------------
+  function: "Latin",
+  variable: "Latin",
+  value: "Latin",
+  constant: "Latin",
+  parameters: "Latin",
+  parameter: "Latin",
+  type: "Latin",
+  string: "Germanic",
+  number: "Latin",
+  int: "Latin",
+  float: "Latin",
+  bool: "Latin",
+  list: "Germanic",
+  dict: "Latin",
+  table: "Latin",
+  database: "Latin",
+
+  // ---------------- LOGIC / CONTROL FLOW ----------------
+  define: "Latin",
+  parse: "Latin",
+  expression: "Latin",
+  state: "Latin",
+  status: "Latin",
+  error: "Latin",
+  assert: "Latin",
+  null: "Latin",
+  none: "Latin",
+  true: "Latin",
+  false: "Latin",
+
+  // ---------------- OPERATIONS ----------------
+  return: "Latin",
+  split: "Germanic",
+  append: "Latin",
+  store: "Latin",
+  print: "Latin",
+
+  // ---------------- CUSTOM / EDGE TOKENS ----------------
+  token: "Germanic",
+  tokens: "Germanic",
+  result: "Latin",
+  output: "Latin",
+  input: "Latin",
+  key: "Germanic",
+  value: "Latin",
+  name: "Germanic",
+  size: "Latin",
+
+  // ---------------- STRUCTURAL WORDS ----------------
+  class: "Latin",
+  def: "Latin",
+  init: "Latin",
+  self: "Germanic",
+  main: "Latin",
+
+  // ---------------- OTHER / AMBIGUOUS ----------------
+  ok: "Other",
+  tab: "Other",
+  stack: "Other",
+  buff: "Other",
+  software: "Other"
+};
+
+
+
+let wordData = [];
+
+// -------------------- TOKENISE --------------------
+function processText() {
+    const text = document.getElementById("inputText").value;
+
+    let words = text.match(/\w+/g) || [];
+    words = words.filter(w => w.length > 1);
+
+    const totalWords = words.length;
+
+    const freq = {};
+    for (let w of words) {
+        freq[w] = (freq[w] || 0) + 1;
+    }
+
+    const entries = Object.entries(freq)
+        .sort((a, b) => b[1] - a[1]);
+
+    // origin lookup?
+    wordData = entries.map(([word, count]) => {
+        const key = word.toLowerCase();
+        const origin = originMap[key] || "Unknown";
+        return [word, count, origin];
+    });
+
+    const uniqueWords = entries.length;
+
+    document.getElementById("stats").innerText =
+        `Total words: ${totalWords} | Unique words: ${uniqueWords}`;
+
+    renderTable(wordData);
+    updateOriginStats(wordData);
+}
+
+// -------------------- TABLE --------------------
+function renderTable(data) {
+    const tbody = document.getElementById("tableBody");
+    tbody.innerHTML = "";
+
+    data.forEach((item, index) => {
+        const row = `<tr>
+            <td>${index + 1}</td>
+            <td>${item[0]}</td>
+            <td>${item[1]}</td>
+            <td>${item[2]}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+    });
+}
+
+function updateOriginStats(data) {
+    let total = 0;
+    let latin = 0;
+    let germanic = 0;
+
+    data.forEach(([word, freq, origin]) => {
+        total += freq;
+
+        if (origin === "Latin") {
+            latin += freq;
+        } else if (origin === "Germanic") {
+            germanic += freq;
+        }
+    });
+
+    const latinPct =
+        total ? ((latin / total) * 100).toFixed(1) : 0;
+
+    const germanicPct =
+        total ? ((germanic / total) * 100).toFixed(1) : 0;
+
+    document.getElementById("originStats").innerText =
+        `Latin: ${latinPct}% | Germanic: ${germanicPct}%`;
+}
+
+
+// -------------------- CLEAR --------------------
+function clearAll() {
+    document.getElementById("inputText").value = "";
+    document.getElementById("tableBody").innerHTML = "";
+    document.getElementById("stats").innerText =
+        "Total words: 0 | Unique words: 0";
+    wordData = [];
+    clearChart();
+    document.getElementById("originStats").innerText =
+    "Latin: 0% | Germanic: 0%";
+}
+
+// -------------------- SAMPLE --------------------
+function loadSample() {
+    document.getElementById("inputText").value = `
+class Database:
+    def __init__(self, name, size):
+        self.name = name
+        self.size = size
+        self.state = "initialised"
+        self.status = "ok"
+        self.error = None
+
+    def define(self, key, value):
+        assert key != None
+        assert value != None
+
+        if self.state == "initialised":
+            self.store(key, value)
+        else:
+            self.error = "database not ready"
+            return None
+
+    def store(self, key, value):
+        if type(key) == str and type(value) == str:
+            self.state = "active"
+            return True
+        else:
+            self.error = "type error"
+            return False
+
+    def parse(self, expression):
+        if expression == "":
+            return "empty expression"
+
+        tokens = expression.split(" ")
+        result = []
+
+        for token in tokens:
+            if token != "":
+                result.append(token)
+
+        return result
+
+
+def function_example(var, const):
+    value = var + const
+
+    if value > 10:
+        return value
+    else:
+        return 0
+
+
+def main():
+    db = Database("testdb", 100)
+
+    db.define("key1", "value1")
+    db.define("key2", "value2")
+
+    expr = "parse this expression into tokens"
+    result = db.parse(expr)
+
+    for item in result:
+        print("token:", item)
+
+    output = function_example(5, 7)
+
+    if output != None:
+        print("result:", output)
+
+    return output
+
+
+# runtime simulation
+if __name__ == "__main__":
+    main()
+`;
+}
+
+// -------------------- CSV EXPORT --------------------
+function exportCSV() {
+    let csv = "Rank,Word,Frequency\n";
+
+    wordData.forEach((row, i) => {
+        csv += `${i+1},${row[0]},${row[1]}\n`;
+    });
+
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "tokeniser_output.csv";
+    a.click();
+}
+
+// -------------------- ZIPF PLOT --------------------
+let chart;
+
+function plotZipf() {
+    const canvas = document.getElementById("zipfChart");
+    const ctx = canvas.getContext("2d");
+
+    const ranks = wordData.map((_, i) => i + 1);
+    const freqs = wordData.map(x => x[1]);
+
+    if (chart) chart.destroy();
+
+    chart = new Chart(ctx, {
+        type: "scatter",
+        data: {
+            datasets: [{
+                label: "Zipf Distribution",
+                data: ranks.map((r, i) => ({
+                    x: r,
+                    y: freqs[i]
+                }))
+            }]
+        },
+        options: {
+            scales: {
+                x: { title: { display: true, text: "Rank" } },
+                y: { title: { display: true, text: "Frequency" } }
+            }
+        }
+    });
+}
+
+// -------------------- CLEAR CHART --------------------
+function clearChart() {
+    const canvas = document.getElementById("zipfChart");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+</script>
+
+<!-- Chart.js for graphing -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>

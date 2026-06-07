@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PAGE TITLE</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    border-right: 1px solid #ddd;
+    padding: 10px 0;
+    overflow-y: auto;
+  }
+
+  .section {
+    display: block;
+    padding: 10px 16px 4px 16px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #333;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+
+  .section:hover {
+    background: #f2f2f2;
+  }
+
+  .sidebar a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+
+  .sidebar a:hover {
+    background: #f2f2f2;
+  }
+
+  .indent-1,
+  .indent-2 {
+    position: relative;
+    padding-left: 36px !important;
+    font-size: 13px;
+  }
+
+  .indent-2 {
+    padding-left: 52px !important;
+  }
+
+  .indent-1::before,
+  .indent-2::before {
+    content: "★";
+    position: absolute;
+    left: 16px;
+    color: #888;
+    font-size: 10px;
+  }
+
+  .indent-2::before {
+    left: 32px;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .main {
+    margin-left: 260px;
+  }
+
+  .topbar {
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-weight: bold;
+  }
+
+  .content {
+    padding: 20px;
+    max-width: 800px;
+  }
+
+  h1 {
+    margin-top: 10px;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<a class="section" href="intro.html">Introduction</a>
+  <a class="section" href="latin.html">Latin’s Influence on the English Language</a>
+  <a class="indent-1" href="history.html">A Brief History of the English Language</a>
+  <a class="indent-1" href="lexical-waves.html">Lexical ‘Waves’</a>
+
+  <a class="section" href="programming.html">The Evolution of Programming Languages</a>
+  <a class="indent-1" href="gen1.html">Bases and Binary (Generation 1)</a>
+  <a class="indent-1" href="gen2.html">Assembly Language (Generation 2)</a>
+  <a class="indent-1" href="gen3-4.html">High-Level Languages (Generation 3 and 4)</a>
+
+ <a class="section" href="syntax.html">To what extent did Latin influence syntax?</a>
+  <a class="indent-1" href="latinates.html">Latinates in Programming Conceptual Terms</a>
+  <a class="indent-1" href="corpus.html">An Introduction to Corpus Linguistics</a>
+  <a class="indent-1" href="corpora.html">Selecting Corpora</a>
+  <a class="indent-1" href="tokeniser.html">Building a Tokeniser</a>
+  <a class="indent-1" href="processing.html">Processing Data</a>
+  <a class="indent-1" href="results.html">Results and Interpretations</a>
+  <a class="indent-1" href="interactiveTokeniser.html"> Try it for yourself! </a>
+
+
+  <a class="section" href="programmers.html">Non-native English Programmers</a>
+  <a class="indent-1" href="demographics.html">Programmer Demographics</a>
+  <a class="indent-1" href="barriers.html">Barriers to learning</a>
+  <a class="indent-1" href="overcoming.html">Overcoming Barriers</a>
+
+  <a class="section" href="reference.html">Reference</a>
+  <a class="indent-1" href="glossary.html">Glossary (searchable)</a>
+  <a class="indent-1" href="bibliography.html">Bibliography</a>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="topbar">
+    To what extent did Latin influence syntax?
+  </div>
+
+  <div class="content">
+
+    <h1>An Introduction to Corpus Linguistics</h1>
+
+<p>
+In order to find a selection of words to trace etymologically to see if they have Latin roots, we first have to decide the criteria to select them with. To do this, I wanted to find the most common words used in code. I modelled by approach using [this paper], and looked into statistical linguistics: specifically, Corpus linguistics.
+</p>
+
+<p>
+Corpus Linguistics is a set of proceedures and methods used to study language. To do this, you select a Corpus. Corpora (meaning body, in Latin) are large, machine readable collections of text. They can be searched/analysed by computer programs to find the most/least common words, when they are used in context, what words usually precede and follow them.
+</p>
+
+<br>
+
+<p>
+To select a corpus, a linguist must be aware of a set of criteria:
+</p>
+
+<ul>
+  <li>
+    Corpora must be well matched to hypothesis - same language (or multiple languages) should be used in the study. For example, a study on French verb forms should have a Corpus in French.
+  </li>
+<br>
+  <li>
+    Corpora must be vast enough to be considered general to question - for example, to avoid overrepresenting a certain genre of book, multiple books from varying genres (in either equal measure or mimicking the actual ratio in existence) should be included. True representation in this sense is very difficult and has not been achieved.
+  </li>
+<br>
+  <li>
+    Must be large enough to detect patterns within the data and so much that analysis by hand would be unfeasible
+  </li>
+  <br>
+</ul>
+
+<br>
+
+<p>
+In order to process a Corpus, it must be split into words, or tokens (using a tokeniser) then the context of the words must be found (using a lexer to note word class, and a parser to find relationships between words). The frequency of a word within a corpus can be used as a proxy for importance/significance of its use in prose.
+</p>
+
+<p>
+Data received from the software can then be analysed. In our case, we needed to find the most common words used in syntax, then trace their etymology to determine if they descended from Latin or not.
+</p>
+
+    
+
+  </div>
+
+</div>
+
+</body>
+</html>

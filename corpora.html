@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PAGE TITLE</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    border-right: 1px solid #ddd;
+    padding: 10px 0;
+    overflow-y: auto;
+  }
+
+  .section {
+    display: block;
+    padding: 10px 16px 4px 16px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #333;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+
+  .section:hover {
+    background: #f2f2f2;
+  }
+
+  .sidebar a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+
+  .sidebar a:hover {
+    background: #f2f2f2;
+  }
+
+  .indent-1,
+  .indent-2 {
+    position: relative;
+    padding-left: 36px !important;
+    font-size: 13px;
+  }
+
+  .indent-2 {
+    padding-left: 52px !important;
+  }
+
+  .indent-1::before,
+  .indent-2::before {
+    content: "★";
+    position: absolute;
+    left: 16px;
+    color: #888;
+    font-size: 10px;
+  }
+
+  .indent-2::before {
+    left: 32px;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .main {
+    margin-left: 260px;
+  }
+
+  .topbar {
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-weight: bold;
+  }
+
+  .content {
+    padding: 20px;
+    max-width: 800px;
+  }
+
+  h1 {
+    margin-top: 10px;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<a class="section" href="intro.html">Introduction</a>
+  <a class="section" href="latin.html">Latin’s Influence on the English Language</a>
+  <a class="indent-1" href="history.html">A Brief History of the English Language</a>
+  <a class="indent-1" href="lexical-waves.html">Lexical ‘Waves’</a>
+
+  <a class="section" href="programming.html">The Evolution of Programming Languages</a>
+  <a class="indent-1" href="gen1.html">Bases and Binary (Generation 1)</a>
+  <a class="indent-1" href="gen2.html">Assembly Language (Generation 2)</a>
+  <a class="indent-1" href="gen3-4.html">High-Level Languages (Generation 3 and 4)</a>
+
+  <a class="section" href="syntax.html">To what extent did Latin influence syntax?</a>
+  <a class="indent-1" href="latinates.html">Latinates in Programming Conceptual Terms</a>
+  <a class="indent-1" href="corpus.html">An Introduction to Corpus Linguistics</a>
+  <a class="indent-1" href="corpora.html">Selecting Corpora</a>
+  <a class="indent-1" href="tokeniser.html">Building a Tokeniser</a>
+  <a class="indent-1" href="processing.html">Processing Data</a>
+  <a class="indent-1" href="results.html">Results and Interpretations</a>
+  <a class="indent-1" href="interactiveTokeniser.html"> Try it for yourself! </a>
+
+
+  <a class="section" href="programmers.html">Non-native English Programmers</a>
+  <a class="indent-1" href="demographics.html">Programmer Demographics</a>
+  <a class="indent-1" href="barriers.html">Barriers to learning</a>
+  <a class="indent-1" href="overcoming.html">Overcoming Barriers</a>
+
+  <a class="section" href="reference.html">Reference</a>
+  <a class="indent-1" href="glossary.html">Glossary (searchable)</a>
+  <a class="indent-1" href="bibliography.html">Bibliography</a>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="topbar">
+    To what extent did Latin influence syntax?
+  </div>
+
+  <div class="content">
+
+    <h1>Selecting Corpora</h1>
+    <p> Open Source projects are codebases that are freely available for the public to view, use, distribute, and modify. Because of this, they are the perfect base to use as a corpus! 
+
+    </p>
+    <p>I chose 3 open source projects to first use as separate corpora to see if results would differ between projects (and their intended uses, since languages can specialise in a certain area of computing), then also chose to combine them into one larger corpus (referred to as the Amalgamation) for a more general selection. The open source projects I chose are detailed below.</p>
+
+
+    
+<br> 
+<h3>TinyExpr</h3>
+
+<p>
+<a href="https://github.com/codeplea/tinyexpr" target="_blank">TinyExpr</a> is a mathematical expression parser, used to evaluate math expressions. Written in C.
+</p>
+
+<ul>
+    <li>2 source code files: 2222 total words, 348 unique words.</li>
+</ul>
+
+<p>
+(Used this one as a first test for my tokeniser, since it was very small!)
+</p>
+
+<h3>Lua</h3>
+
+<p>
+<a href="https://www.lua.org/" target="_blank">Lua</a> is a lightweight scripting language (interpreted line by line instead of all at once) and is very fast! Used in embedded systems (within smart devices, like microwaves) or embedded within video games to take care of game rules/level mechanics without having to recompile ‘heavier’ code. General purpose and has a very small memory footprint. Written in the ANSI C programming language.
+</p>
+
+<ul>
+    <li>64 source code files: 100153 total words, 7155 unique words</li>
+</ul>
+
+
+<h3>SQLite</h3>
+
+<p>
+<a href="https://www.sqlite.org/" target="_blank">SQLite</a> is a relational database management system.Iit is self-contained and serverless so all data is stored in one file rather than spread throughout multiple. Used for prototyping and small web-apps, or single user applications. Also very quick! Written in C.
+</p>
+
+<ul>
+    <li>111 source code files: 1032132 total words, 33181 unique words</li>
+</ul>
+
+<h3>Amalgamation (All 3 projects, combined)</h3>
+
+<ul>
+    <li>177 source code files, 1134508 words, 37732 unique words.</li>
+</ul>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PAGE TITLE</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    border-right: 1px solid #ddd;
+    padding: 10px 0;
+    overflow-y: auto;
+  }
+
+  .section {
+    display: block;
+    padding: 10px 16px 4px 16px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #333;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+
+  .section:hover {
+    background: #f2f2f2;
+  }
+
+  .sidebar a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+
+  .sidebar a:hover {
+    background: #f2f2f2;
+  }
+
+  .indent-1,
+  .indent-2 {
+    position: relative;
+    padding-left: 36px !important;
+    font-size: 13px;
+  }
+
+  .indent-2 {
+    padding-left: 52px !important;
+  }
+
+  .indent-1::before,
+  .indent-2::before {
+    content: "★";
+    position: absolute;
+    left: 16px;
+    color: #888;
+    font-size: 10px;
+  }
+
+  .indent-2::before {
+    left: 32px;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .main {
+    margin-left: 260px;
+  }
+
+  .topbar {
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-weight: bold;
+  }
+
+  .content {
+    padding: 20px;
+    max-width: 800px;
+  }
+
+  h1 {
+    margin-top: 10px;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  details {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<a class="section" href="intro.html">Introduction</a>
+  <a class="section" href="latin.html">Latin’s Influence on the English Language</a>
+  <a class="indent-1" href="history.html">A Brief History of the English Language</a>
+  <a class="indent-1" href="lexical-waves.html">Lexical ‘Waves’</a>
+
+  <a class="section" href="programming.html">The Evolution of Programming Languages</a>
+  <a class="indent-1" href="gen1.html">Bases and Binary (Generation 1)</a>
+  <a class="indent-1" href="gen2.html">Assembly Language (Generation 2)</a>
+  <a class="indent-1" href="gen3-4.html">High-Level Languages (Generation 3 and 4)</a>
+
+  <a class="section" href="syntax.html">To what extent did Latin influence syntax?</a>
+  <a class="indent-1" href="latinates.html">Latinates in Programming Conceptual Terms</a>
+  <a class="indent-1" href="corpus.html">An Introduction to Corpus Linguistics</a>
+  <a class="indent-1" href="corpora.html">Selecting Corpora</a>
+  <a class="indent-1" href="tokeniser.html">Building a Tokeniser</a>
+  <a class="indent-1" href="processing.html">Processing Data</a>
+  <a class="indent-1" href="results.html">Results and Interpretations</a>
+  <a class="indent-1" href="interactiveTokeniser.html"> Try it for yourself! </a>
+
+  <a class="section" href="programmers.html">Non-native English Programmers</a>
+  <a class="indent-1" href="demographics.html">Programmer Demographics</a>
+  <a class="indent-1" href="barriers.html">Barriers to learning</a>
+  <a class="indent-1" href="overcoming.html">Overcoming Barriers</a>
+
+  <a class="section" href="reference.html">Reference</a>
+  <a class="indent-1" href="glossary.html">Glossary (searchable)</a>
+  <a class="indent-1" href="bibliography.html">Bibliography</a>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="topbar">
+    Latin's Influence on the English Language
+  </div>
+
+  <div class="content">
+
+    <h1>A Brief History of the English Language</h1>
+
+    <p>
+      English is a West Germanic Language, belonging to a group called the Indo-European Family Language. The original home of this is thought to have been somewhere between the Caspian and Black Sea around 6000 years ago - although this is debated! 
+    </p>
+
+    <p>There are no written records of this language, but we can make inferences about what words may have sounded/looked like by looking at cognates of the languages that descend from it. Cognates are words in different language that descend from the same root word, and therefore look and sound similar - with this information, linguists can make a decent guess at what the word may have looked like in its parent or predecessor language. 
+</p>
+<p>Greek: Tris<br>
+Latin: Tres<br>
+Gothic: Thri <br>
+English: Three <br>
+
+<p>Cognates can also show systematic sound changes that occur as language develops - like Latin’s “Pater” to English’s “Father”.
+</p>
+
+<img src="PIETree.png" alt="Language Tree" style="width:450px;height:400px;" >
+
+
+<p> Proto-Indo-European developed into many branches: Germanic being one of them.
+There are 3 sub-branches of Germanic: East, North and West. East Germanic developed into Gothic (with no modern languages developed from it), North Germanic (which developed into the modern Scandinavian languages like Swedish and Danish) and West Germanic (which is the ancestor of German, Dutch. Flemish and English!)
+
+
+</p>
+
+<p> The development of English can be categorised into multiple stages: Old English, Middle English, and Modern English. 
+</p>
+
+<details open>
+  <summary>Old English</summary>
+  <p>In around 500 BCE, Britain was invaded by Celtic tribes. In 43 CE, Britain was invaded by Emperor Claudius and became part of the Roman Empire. After the empire collapsed, the remaining Celts sought help defending the land against the Scots and Picts from 3 Germanic tribes: the Angles, the Saxons and the Jutes. The three tribes not only conquered the Scots but took the island for themselves - by 600AD, Englaland, and its language, English, came into existence. Old English vocabulary was influenced by multiple languages, such as Celtic (predominantly taking place names like London, Kent, and Thames), Scandinavian, and Latin.  
+</p>
+</details>
+
+<details>
+  <summary>Middle English</summary>
+    <p>
+    The Normans, of the Norman Invasion of England in 1066, spoke Norman French (french influenced by a Germanic Dialect.) Common people spoke English, while the Aristocrats spoke Norman French. The resulting combination of these two languages is called Middle English. At the end of the 14th century, the Normans decide to adopt English as their official language and open Parliament in Westminster, London - resulting in the dominance of the London dialect as the standard spoken and written language. 
+
+</p>
+</details>
+
+<details>
+  <summary>Modern English</summary>
+    <p>
+
+
+In 1476, the printing press was invented by Caxton. Literacy became more common, and in turn, English books. Printing houses were most commonly found in London, resulting in a fixed grammar and standardised spelling. The first dictionary was published in 1604. 
+The Renaissance, a time known for rapid learning and discovery, resulted in even more words taken from Latin and Greek to describe new concepts and ideas - words like hypothermia!
+
+
+</p>
+</details>
+
+
+</p>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PAGE TITLE</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    border-right: 1px solid #ddd;
+    padding: 10px 0;
+    overflow-y: auto;
+  }
+
+  .section {
+    display: block;
+    padding: 10px 16px 4px 16px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #333;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+
+  .section:hover {
+    background: #f2f2f2;
+  }
+
+  .sidebar a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+
+  .sidebar a:hover {
+    background: #f2f2f2;
+  }
+
+  .indent-1,
+  .indent-2 {
+    position: relative;
+    padding-left: 36px !important;
+    font-size: 13px;
+  }
+
+  .indent-2 {
+    padding-left: 52px !important;
+  }
+
+  .indent-1::before,
+  .indent-2::before {
+    content: "★";
+    position: absolute;
+    left: 16px;
+    color: #888;
+    font-size: 10px;
+  }
+
+  .indent-2::before {
+    left: 32px;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .main {
+    margin-left: 260px;
+  }
+
+  .topbar {
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-weight: bold;
+  }
+
+  .content {
+    padding: 20px;
+    max-width: 800px;
+  }
+
+  h1 {
+    margin-top: 10px;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<a class="section" href="intro.html">Introduction</a>
+  <a class="section" href="latin.html">Latin’s Influence on the English Language</a>
+  <a class="indent-1" href="history.html">A Brief History of the English Language</a>
+  <a class="indent-1" href="lexical-waves.html">Lexical ‘Waves’</a>
+
+  <a class="section" href="programming.html">The Evolution of Programming Languages</a>
+  <a class="indent-1" href="gen1.html">Bases and Binary (Generation 1)</a>
+  <a class="indent-1" href="gen2.html">Assembly Language (Generation 2)</a>
+  <a class="indent-1" href="gen3-4.html">High-Level Languages (Generation 3 and 4)</a>
+
+<a class="section" href="syntax.html">To what extent did Latin influence syntax?</a>
+  <a class="indent-1" href="latinates.html">Latinates in Programming Conceptual Terms</a>
+  <a class="indent-1" href="corpus.html">An Introduction to Corpus Linguistics</a>
+  <a class="indent-1" href="corpora.html">Selecting Corpora</a>
+  <a class="indent-1" href="tokeniser.html">Building a Tokeniser</a>
+  <a class="indent-1" href="processing.html">Processing Data</a>
+  <a class="indent-1" href="results.html">Results and Interpretations</a>
+  <a class="indent-1" href="interactiveTokeniser.html"> Try it for yourself! </a>
+
+  <a class="section" href="programmers.html">Non-native English Programmers</a>
+  <a class="indent-1" href="demographics.html">Programmer Demographics</a>
+  <a class="indent-1" href="barriers.html">Barriers to learning</a>
+  <a class="indent-1" href="overcoming.html">Overcoming Barriers</a>
+
+  <a class="section" href="reference.html">Reference</a>
+  <a class="indent-1" href="glossary.html">Glossary (searchable)</a>
+  <a class="indent-1" href="bibliography.html">Bibliography</a>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="topbar">
+    The Evolution of Programming Languages
+  </div>
+
+  <div class="content">
+
+    <h1>High-level Languages</h1>
+
+    <p>
+      The third generation of programming languages follows this path as well - designers of languages like FORTRAN, COBOL and ALGOL deliberately modeled language syntax on English grammatical structure and used English keywords for readability. [cite from babbage]
+The fourth generation continues the trend of the third, moving even closer towards natural language - languages like Kotlin, Java and Swift are even easier to debug, code and maintain. 
+
+    </p>
+
+    <p>
+      The origin of early programming language designers such as Backus, Hopper and von Neumann are primarily American/British institutions. As a result, the majority of keywords that are common in syntax –as well as error messages, documentation and resources are heavily English based– which as we saw, is heavily influenced lexically by Latin. 
+
+    </p>
+
+  </div>
+
+</div>
+
+</body>
+</html>
